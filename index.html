@@ -1,0 +1,494 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>America's Pastime Reviews</title>
+    <link rel="shortcut icon" href="images/logo.jpg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <style>
+        .bg-img {
+            background-image: url(images/Home.jpg);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="modal" id="post-recipe">
+        <div class="modal-background" id="post-recipe"></div>
+        <div class="modal-content p-6 has-background-white">
+            <h1 class="is-size-2 title">Post recipe</h1>
+        </div>
+    </div>
+    <!-- sign up modal -->
+    <div class="modal" id="signup-modal">
+        <div class="modal-background" id="signup-modalbg"></div>
+        <div class="modal-content p-6 has-background-white">
+            <h1 class="is-size-3 title">Sign Up!</h1>
+            <form id="signup_form">
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control">
+                        <input type="email" id="email">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control">
+                        <input type="password" id="password">
+                    </div>
+                </div>
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-link" id="sum_submit">Submit</button>
+                    </div>
+                    <div class="control">
+                        <button class="button is-link is-light">Cancel</button>
+                    </div>
+                </div>
+
+                <div class="error has-text-danger" id="signup_error">
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- sign in modal -->
+    <div class="modal" id="signin-modal">
+        <div class="modal-background" id="signin-modalbg"></div>
+        <div class="modal-content p-6 has-background-white">
+            <h1 class="is-size-3 title">Sign In!</h1>
+            <form id="signin_form">
+                <!-- Email -->
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control">
+                        <input type="email" id="email_">
+                    </div>
+
+                </div>
+                <!-- Password -->
+                <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control">
+                        <input type="password" id="password_">
+                    </div>
+                </div>
+                <!-- submit -->
+                <div class="field">
+                    <div class="control">
+                        <button class="m-3 button is-link">Submit</button>
+                    </div>
+                </div>
+                <div class="has-text-danger" id="signin_error">
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="bg-img">
+        <!-- navbar  -->
+        <nav class="navbar has-background-primary-light" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="index.html">
+                    <img src="images/logo.jpg" width="60">
+                </a>
+                <!-- Why wont the burger show content of navbar? -->
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                    data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="index.html">
+                        Home
+                    </a>
+
+                    <a class="navbar-item" id="rankings">
+                        Rankings
+                    </a>
+                    <a class="navbar-item" id="about">
+                        About
+                    </a>
+                </div>
+
+                <div class="navbar-end">
+                    <div class="navbar-item is-danger">
+                        <a id="signupbtn" class="loggedout">Sign Up</a>
+                    </div>
+                    <div class="navbar-item">
+                        <a id="signinbtn" class="loggedout">Sign In</a>
+                    </div>
+                    <div class="navbar-item">
+                        <p id="welcome_user" class="loggedin has-text-danger-dark"></p>
+                    </div>
+                    <div class="navbar-item">
+                        <a id="signoutbtn" class="loggedin">Sign Out</a>
+                    </div>
+                </div>
+        </nav>
+        <!-- section class and container class -->
+        <div class="section">
+            <div class="container">
+                <!-- default columns take whole size 213 -->
+                <div class="columns ">
+                    <!-- site navigation column (left column)-->
+                    <div class="column has-background-primary-light is-2 ">
+                        <aside class="menu">
+                            <p
+                                class="menu-label has-text-centered  has-text-danger-dark has-text-weight-bold is-size-6">
+                                MLB Teams
+                            </p>
+                            <ul class="menu-list">
+                                <a href="index.html">Home</a>
+                                <li><a id="azd">Arizona Diamondbacks</a></li>
+                                <li><a id="atlb">Atlanta Braves</a></li>
+                                <li><a id="balo" value="bal">Baltimore Orioles</a></li>
+                                <li><a id="bosr">Boston Red Sex</a></li>
+                                <li><a id="chc">Chicago Cubs</a></li>
+                                <li><a>Chicago White Sox</a></li>
+                                <li><a>Cincinnati Reds</a></li>
+                                <li><a>Cleveland Indians</a></li>
+                                <li><a>Colorado Rockies</a></li>
+                                <li><a>Detroit Tigers</a></li>
+                                <li><a>Houston Astros</a></li>
+                                <li><a>Kansas City Royals</a></li>
+                                <li><a>Los Angeles Angels</a></li>
+                                <li><a>Los Angeles Dodgers</a></li>
+                                <li><a>Miami Marlins</a></li>
+                                <li><a id="mkeb">Milwaukee Brewers</a></li>
+                                <li><a>Minnesota Twins</a></li>
+                                <li><a>New York Mets</a></li>
+                                <li><a>New York Yankess</a></li>
+                                <li><a>Oakland Athletics</a></li>
+                                <li><a>Philadelphia Phillies</a></li>
+                                <li><a id="pitp">Pittsburgh Pirates</a></li>
+                                <li><a>San Diego Padres</a></li>
+                                <li><a id="sfg">San Francisco Giants</a></li>
+                                <li><a>Seattle Mariners</a></li>
+                                <li><a>St. Louis Cardinals</a></li>
+                                <li><a>Tampa Bay Rays</a></li>
+                                <li><a>Texas Rangers</a></li>
+                                <li><a>Toronto Blue Jays</a></li>
+                                <li><a>Washington Nationals</a></li>
+                            </ul>
+                            </ul>
+                        </aside>
+                    </div>
+
+
+                    <!-- Main column (middle column) -->
+                    <div class="column has-background-primary-light ml-2" id="center">
+                        <!-- <p>Some text</p> -->
+                        <!-- First div for "America's Pastime Reviews" Header -->
+                        <div class="container" id="hidden_form">
+                            <form id="submitrecipeform"></form>
+                        </div>
+                        <div class="container" id="content">
+                            <div>
+                                <p class="has-background-danger-dark p-1 mb-5"></p>
+                                <p
+                                    class="menu-label has-text-centered  has-text-danger-dark has-text-weight-bold is-size-3 is-italic">
+                                    America's Pastime Reviews
+                                </p>
+                                <p class="has-background-danger-dark p-1 mb-5"></p>
+                                <p class="mb-5">
+                                    Hello from Jon and Peter! This website was created in the hopes of consolidating all
+                                    information about the MLB
+                                    stadiums, both in the American and National League. Information about any
+                                    stadium, including their events and ticket information can be found on any
+                                    individual
+                                    stadium's page.
+                                </p>
+
+                                <p>
+                                    Here, fans can rate their experiences at various stadiums to help other fans decide
+                                    whether
+                                    or not they want to attend an event happening at a certain stadium.
+                                    To see fan's reviews or leave your own review, please sign up using the link at the
+                                    top
+                                    right of the website.
+                                </p>
+                            </div>
+                            <div>
+                                <!-- Second div for "How to Navigate" Header -->
+                                <p class="mb-6"></p>
+                                <p class="has-background-danger-dark p-1 mt-5"></p>
+                                <p
+                                    class="menu-label has-text-centered  has-text-danger-dark has-text-weight-bold is-size-4">
+                                    How to Navigate
+                                </p>
+                                <p class="has-background-danger-dark p-1 mb-5"></p>
+                                <p>
+                                    At the top of the page you are able to browse MLB ballparks depedning on which
+                                    League they are in, whether that be the National League or the American League. When
+                                    you click on an individual stadium, you will be directed to a new page with all of
+                                    the
+                                    information
+                                    for that stadium.
+                                </p>
+
+                                <p class=mt-5>
+                                    You will also see a Rankings tab at the top. After a long review of
+                                    each stadium, we put together a rankings page based on a number of factors.
+                                    Some examples include the food, beer selection, stadium atmosphere, and more. Feel
+                                    free
+                                    to check out the our rankings, and if you have any different thoughts, write a
+                                    comment
+                                    in our
+                                    reviews page and let us know your rankings!
+                                    <p class=mt-5></p>
+                                    <p>To learn more about the creater's of America's Pastime Reviews, click on the
+                                        About
+                                        tab up top. There you will find information about us and attached will be our
+                                        contact information if you would like to get in touch to talk about baseball or
+                                        other sports. </p>
+                                </p>
+
+                                <p class="mt-5">
+                                    On the left we have each MLB team listed with more information about the team and
+                                    their
+                                    stadium. Click on your favorite team to check out their page and leave a comment
+                                    about
+                                    your experience!
+                                </p>
+
+                                <p class="mt-5">
+                                    Keep scrolling down for more content! Enjoy!
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Twitter Feed Column -->
+                    <div class="column is-3 ml-2 has-background-primary-light p-1">
+                        <div class="message">
+                            <div class="message-header has-text-centered ">
+                                <p class="has-text-centered ">Current MLB News</p>
+                            </div>
+                            <div class="message-body p-2 mb-3">
+                                <p class="is-5">
+                                    <a class="twitter-timeline" data-height="1000"
+                                        href="https://twitter.com/MLB?ref_src=twsrc%5Etfw">Tweets by MLB</a>
+                                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
+                                    </script>
+                                </p>
+                            </div>
+                        </div>
+                    </div> <!-- related content  -->
+
+                </div>
+            </div>
+        </div>
+        <!-- review section -->
+        <div class="section">
+            <div class="container">
+                <!-- default columns take whole size 213 -->
+                <div class="columns">
+                    <!-- site navigation (left column)-->
+                    <div class="column has-background-primary-light">
+                        <p class="has-background-danger-dark p-1 mt-5"></p>
+                        <p class="menu-label has-text-centered  has-text-danger-dark has-text-weight-bold is-size-4">
+                            Sign In or Sign Up to Leave a Review of a Stadium
+                        </p>
+                        <p class="has-background-danger-dark p-1 mb-5"></p>
+
+                        <div class="loggedin">
+
+                            <div class="field">
+                                <label class="label">Stadium</label>
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="Wrigley Field" id="stadium">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Score</label>
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="Score (1-10)" id="score">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Review</label>
+                                <div class="control">
+                                    <textarea class="textarea" placeholder="What should visitors know?"
+                                        id="review"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Image</label>
+                                <div class="control">
+                                    <input class="input" type="file" id="stadium_image" placeholder="Choose Image">
+                                </div>
+                            </div>
+
+
+                            <div class="field is-grouped">
+                                <div class="control">
+                                    <button class="button is-link is-danger mt-5 mb-5" type="reset"
+                                        id="post_comment">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="review_content">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COVID update column for 2021 season -->
+            <div class="section">
+                <div class="container">
+                    <!-- default columns take whole size 213 -->
+                    <div class="columns">
+                        <!-- site navigation (left column)-->
+                        <div class="column has-background-primary-light">
+                            <p class="has-background-danger-dark p-1 mt-5"></p>
+                            <p
+                                class="menu-label has-text-centered  has-text-danger-dark has-text-weight-bold is-size-4">
+                                COVID-19 Update for 2021 MLB Season
+                            </p>
+                            <p class="has-background-danger-dark p-1 mb-5"></p>
+                            <p> There's good news for baseball fans this upcoming season. The MLB has announced that
+                                they will be allowing fans to attend baseball games with proper social distancing and
+                                COVID-19 protocols in place. Although fans will be allowed to attend games, the final
+                                decision is based upon each individual team and the policies are subject to change
+                                depending
+                                on the severity of COVID-19 in each location.</p>
+                            <p class="mt-5">To read more about MLB's policies for the upcoming season as well as
+                                information
+                                about individual team's policies, click the link below.</p>
+                            <p class="mb-3">
+                                <a target="_blank"
+                                    href="https://www.cbssports.com/mlb/news/mlb-fans-return-in-2021-tracking-every-baseball-teams-attendance-plan-for-upcoming-season/">Information
+                                    for fans and the 2021 MLB season </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="container">
+                    <!-- default columns take whole size 213 -->
+                    <div class="columns">
+                        <!-- site navigation (left column)-->
+                        <div class="column has-background-primary-light">
+                            <p class="has-background-danger-dark p-1 mt-5"></p>
+                            <p
+                                class="menu-label has-text-centered  has-text-danger-dark has-text-weight-bold is-size-4">
+                                Stadium News
+                            </p>
+                            <p class="has-background-danger-dark p-1 mb-5"></p>
+                            <p class="has-text-weight-bold has-text-centered mb-1">Busch Stadium</p>
+                            <p class="mb-6">
+                                The St. Louis Cardinals recently renovated their Party Suites as part of a
+                                multi-million dollar
+                                project aimed at enhancing the experience for groups. A total of 21 Party Suites
+                                have be given an updated look. They have been updated to host groups of 32 or more
+                                and now feature a buffet and full-service bar.
+                            </p>
+
+                            <p class="has-text-weight-bold has-text-centered mb-1">Fenway Park</p>
+                            <p class="mb-6">
+                                The Boston Red Sox are on track to add another round of renovations to MLB's oldest
+                                stadium. The updates include bleacher upgrades, a new function room, and a new
+                                5,000-seat theater in collaboration with Live Nation is planned at Lansdowne and
+                                Ipswich streets. They plan to finish these renovations before the start of the 2021
+                                opening.
+                            </p>
+
+                            <p class="has-text-weight-bold has-text-centered mb-1">Dodger Stadium</p>
+                            <p class="mb-6">
+                                The Los Angeles Dodgers updated their stadium prior to the 2020 season to include a
+                                new center field plaza that features food and beverage areas, children's play area,
+                                and a space for live entertainment. The renovations also include a new outfield
+                                entryway, where the legendary Jackie Robinson statue will be on display, and much
+                                more.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Footer -->
+        <footer class="footer has-background-primary-light has-text-weight-bold">
+            <div class="content has-text-centered">
+                <p>Copyright ©2021 America's Pastime Reviews All Rights Reserved.</p>
+                <p>Site Created By Jonathan Hansen & Peter Kennedy</p>
+                <a href="http://facebook.com"><i class="fab fa-2x fa-facebook"></i></a>
+                <a href="http://twitter.com"><i class="fab fa-2x fa-twitter"></i></a>
+                <a href="http://reddit.com"><i class="fab fa-2x fa-reddit"></i></a>
+                <a href="http://stubhub.com"><i class="fas fa-2x fa-ticket-alt"></i></a>
+
+            </div>
+        </footer>
+    </div>
+
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+
+    <script>
+        // TODO
+        // Copy **only** your firebaseConfig from Google Firebae and add it below
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaS...",
+            authDomain: "americaspastime-99f97.firebaseapp.com",
+            projectId: "americaspastime-99f97",
+            storageBucket: "americaspastime-99f97.appspot.com",
+            messagingSenderId: "312220354836",
+            appId: "1:312220354836:web:a69ef3b13b98dcb9e5da01"
+        };
+
+        // Initialize Firebase
+
+
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        // define authentication variable
+        let auth = firebase.auth();
+        let db = firebase.firestore();
+        let ref = firebase.storage().ref();
+    </script>
+
+
+    <!-- JavaScript -->
+    <script src="index.js"></script>
+
+</body>
+
+</html>
